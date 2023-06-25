@@ -23,7 +23,4 @@ public class Serie {
     private String genre;
     private List<Season> seasons = new ArrayList<>();
 
-
-
-
 }
