@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitTemplateConfig {
 
 
-    public static final String EXCHANGE_NAME = "netflixExchange";
+    public static final String EXCHANGE_NAME = "appExchange";
     public static final String TOPIC_NEW_MOVIE = "com.dh.newMovie";
     public static final String TOPIC_NEW_SERIE = "com.dh.newSerie";
     public static final String QUEUE_NEW_MOVIE = "newMovieQueue";
@@ -26,14 +26,10 @@ public class RabbitTemplateConfig {
     }
 
     @Bean
-    public Queue newMovieQueue() {
-        return new Queue(QUEUE_NEW_MOVIE);
-    }
+    public Queue newMovieQueue() { return new Queue(QUEUE_NEW_MOVIE); }
 
     @Bean
-    public Queue newSerieQueue() {
-        return new Queue(QUEUE_NEW_SERIE);
-    }
+    public Queue newSerieQueue() {  return new Queue(QUEUE_NEW_SERIE); }
 
     @Bean
     public Binding declareBindingSpecificNewMovie() {

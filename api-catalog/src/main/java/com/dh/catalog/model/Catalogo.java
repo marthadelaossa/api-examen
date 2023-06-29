@@ -17,6 +17,11 @@ import java.util.List;
 @Document(collection = "Catalog")
 public class Catalogo {
 
+    private String genre;
+    private List<Movie> movies;
+    private List<Serie> series;
+
+
     private String id;
     private Movie movie;
     private Serie serie;

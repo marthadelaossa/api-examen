@@ -2,16 +2,13 @@ package com.dh.catalog.controller;
 
 import com.dh.catalog.client.MovieServiceClient;
 import com.dh.catalog.client.SerieServiceClient;
-import com.dh.catalog.model.serie.Season;
+import com.dh.catalog.model.movie.Movie;
+import com.dh.catalog.model.serie.Serie;
 import com.dh.catalog.service.CatalogService;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -29,13 +26,13 @@ public class CatalogController {
 	}
 	@GetMapping("/movies/{genre}")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
-	ResponseEntity<List<MovieServiceClient.Movie>> getMovieByGenre (@PathVariable String genre) {
+	ResponseEntity<List<Movie>> getPGenre(@PathVariable String genre) {
 		return ResponseEntity.ok(movieServiceClient.getMovieByGenre(genre));
 	}
 
 	@GetMapping("/series/{genre}")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
-	ResponseEntity<List<SerieServiceClient.Serie>> getSerieByGenre (@PathVariable String genre) {
+	ResponseEntity<List<Serie>> getSGenre(@PathVariable String genre) {
 		return ResponseEntity.ok(serieServiceClient.getSerieByGenre(genre));
 	}
 }

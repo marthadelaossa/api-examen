@@ -1,31 +1,40 @@
 package com.dh.catalog.event;
 
 
-
 import com.dh.catalog.config.RabbitTemplateConfig;
-import com.dh.catalog.model.serie.Serie;
-import com.dh.catalog.repository.SerieRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.dh.catalog.model.serie.Season;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class SeriesListener {
 
 
-
-    private final SerieRepository serieRepository;
-
-    public SeriesListener( SerieRepository serieRepository) {
-           this.serieRepository = serieRepository;
+    @RabbitListener(queues = RabbitTemplateConfig.QUEUE_NEW_SERIE)
+    public void receiveSerie(SeriesListener.Serie serie) {
+        System.out.print("Serie "+ serie.name);
+        //procesamiento
     }
 
-    @RabbitListener(queues = RabbitTemplateConfig.QUEUE_NEW_SERIE)
-    public void receiveSerie(@Payload Serie serie) {
-              serieRepository.save(serie);
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class Serie {
+
+        @Id
+        private String id;
+        private String name;
+        private String genre;
+        private List<Season> seasons = new ArrayList<>();
     }
 
 }

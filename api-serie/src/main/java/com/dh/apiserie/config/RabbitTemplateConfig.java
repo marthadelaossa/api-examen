@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitTemplateConfig {
 
-    public static final String EXCHANGE_NAME = "netflixExchange";
+    public static final String EXCHANGE_NAME = "appExchange";
     public static final String TOPIC_NEW_SERIE = "com.dh.newSerie";
 
     @Bean
@@ -19,15 +19,16 @@ public class RabbitTemplateConfig {
     }
 
     @Bean
-    public Jackson2JsonMessageConverter jackson2JsonMessageConverter() {
-        return new Jackson2JsonMessageConverter();
-    }
-
-    @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory){
         RabbitTemplate template = new RabbitTemplate(connectionFactory);
         template.setMessageConverter(jackson2JsonMessageConverter());
         return template;
     }
+
+    @Bean
+    public Jackson2JsonMessageConverter jackson2JsonMessageConverter() {
+        return new Jackson2JsonMessageConverter();
+    }
+
 
 }
