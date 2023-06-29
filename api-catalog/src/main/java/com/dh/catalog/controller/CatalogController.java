@@ -29,13 +29,13 @@ public class CatalogController {
 	}
 	@GetMapping("/movies/{genre}")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
-	ResponseEntity<List<MovieServiceClient.Movie>> getMovieByGenre (@PathVariable String genre) {
+	ResponseEntity<List<MovieServiceClient.Movie>> getPGenre(@PathVariable String genre) {
 		return ResponseEntity.ok(movieServiceClient.getMovieByGenre(genre));
 	}
 
 	@GetMapping("/series/{genre}")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
-	ResponseEntity<List<SerieServiceClient.Serie>> getSerieByGenre (@PathVariable String genre) {
+	ResponseEntity<List<SerieServiceClient.Serie>> getSGenre(@PathVariable String genre) {
 		return ResponseEntity.ok(serieServiceClient.getSerieByGenre(genre));
 	}
 }

@@ -1,6 +1,5 @@
 package com.dh.catalog.model.serie;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +15,6 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Serie {
 
     @Id
@@ -24,7 +22,5 @@ public class Serie {
     private String name;
     private String genre;
     private List<Season> seasons = new ArrayList<>();
-
-
 
 }
